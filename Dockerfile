@@ -172,6 +172,18 @@ RUN cd /root \
  && rm -fr /root/git* \
  && true
 
+# Build/install git-2.29.2
+RUN cd /root \
+ && wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.29.2.tar.xz \
+ && tar xf git-2.29.2.tar.xz \
+ && cd git-2.29.2 \
+ && make configure \
+ && ./configure --prefix=/git-2.29 \
+ && make \
+ && make install \
+ && rm -fr /root/git* \
+ && true
+
 # Minimal git config
 RUN git config --global user.email "you@example.com" \
  && git config --global user.name "Your Name" \
