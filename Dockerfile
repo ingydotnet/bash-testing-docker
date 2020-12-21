@@ -148,6 +148,17 @@ RUN cd /root \
  && rm -fr /root/openssl* \
  && true
 
+# Build/install git-2.8.0
+RUN cd /root \
+ && wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.8.0.tar.xz \
+ && tar xf git-2.8.0.tar.xz \
+ && cd git-2.8.0 \
+ && make configure \
+ && ./configure --prefix=/git-2.8 \
+ && make install \
+ && rm -fr /root/git* \
+ && true
+
 # Build/install git-2.17.1
 RUN cd /root \
  && wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.17.1.tar.xz \
